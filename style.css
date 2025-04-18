@@ -21,118 +21,61 @@ a {
 a:hover {
     color: #00b36b;
 }
-.navbar {
+
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--navbar-padding-vertical, 1.5rem) var(--navbar-padding-horizontal, 2rem);
-    background-color: var(--navbar-bg-color, #0a0a0a);
+    padding: 2rem 4rem;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 100;
+    background-color: transparent;
+    z-index: 10;
     backdrop-filter: blur(10px);
+    height: 100px;
 }
 
-.logo {
-    color: var(--logo-color, white);
-    font-size: var(--logo-font-size, 2rem);
-    font-weight: var(--logo-font-weight, 700);
-    
+header .logo {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #00f595;
 }
 
-.logo a {
-    text-decoration: none;
-    color: var(--logo-color, #00f595);
-    font-size:3rem;
-    font-weight: bold;
-}
-
-.logo:hover {
-    cursor: pointer;
-    text-decoration: underline;
-}
-
-.nav-links {
+nav ul {
     list-style: none;
     display: flex;
-    margin: 0;
-    padding: 0;
+    gap: 2rem;
 }
 
-.nav-links li {
-    display: inline-block;
+nav a {
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
 }
 
-.nav-links a {
-    color: var(--nav-link-color, white);
-    text-decoration: none;
-    padding: var(--nav-link-padding-vertical, 0.75rem) var(--nav-link-padding-horizontal, 1.5rem);
-    display: block;
-    font-size: var(--nav-link-font-size, 1.1rem);
-    color: var(--nav-link-color, #00f595);
+nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background-color: #00f595;
+    transition: width 0.3s ease;
 }
 
-.nav-links a:hover {
-    background: linear-gradient(90deg, rgba(2, 0, 2, 0.21) 40%, rgba(0, 242, 255, 0.238) 100%);
-    box-shadow: 1px 1px 1px 1px rgba(2, 2, 92, 0.354);
-    border-radius: var(--nav-link-border-radius, 0.3rem);
+nav a:hover::after {
+    width: 100%;
 }
 
-.hamburger {
-    display: none;
+main {
+    padding: 6rem 4rem;
+    min-height: 100vh;
+    display: flex;
     flex-direction: column;
-    cursor: pointer;
-    padding: 0.5rem;
-}
-
-.hamburger span {
-    width: var(--hamburger-width, 1.8rem);
-    height: var(--hamburger-height, 0.2rem);
-    background: var(--hamburger-color, white);
-    margin: 0.3rem 0;
-    transition: 0.3s;
-}
-
-#menu-toggle {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .nav-links {
-        position: fixed;
-        top: var(--mobile-nav-top, 5rem);
-        right: 0;
-        width: 100%;
-        background-color: var(--mobile-nav-bg-color, #0a0a0a);
-        flex-direction: column;
-        align-items: center;
-        display: none;
-        padding: 0;
-    }
-
-    .nav-links li {
-        display: block;
-        margin: 1rem 0;
-        text-align: center;
-        width: 100%;
-    }
-
-    .nav-links a {
-        width: 100%;
-        text-align: center;
-        padding: 1rem;
-    }
-
-    #menu-toggle:checked + .hamburger + .nav-links {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .hamburger {
-        display: flex;
-    }
 }
 
 .hero {
@@ -142,6 +85,7 @@ a:hover {
     gap: 4rem;
     margin-bottom: 6rem;
 }
+
 .hero-content {
     display: flex;
     flex-direction: column;
@@ -166,7 +110,19 @@ a:hover {
     color: #ddd;
     max-width: 400px;
 }
-
+.hero-content .download-button{
+        background-color: #00f595; /* Make the background transparent */
+        border: 2px solid #00f595; /* Add a border */
+        color: #0a0a0a; /* Change text color to green */
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        border-radius: 0.3rem;
+        transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+        width: fit-content;
+        left: 50%;
+        position: relative;
+    }
 .hero-content .button {
     background-color: #00f595;
     color: #0a0a0a;
@@ -181,7 +137,10 @@ a:hover {
 .hero-content .button:hover {
     background-color: #00b36b;
 }
-
+.hero-content .download-button:hover {
+        background-color: #00b36b; /* Change to a darker green on hover */
+        color: #0a0a0a; /* Keep text color green */
+    }
 .hero-image-container {
     width: 100%;
     height: auto;
@@ -194,6 +153,33 @@ a:hover {
     height: auto;
     border-radius: 0.5rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.green-line-horizontal {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.125rem;
+    background-color: #00f595;
+}
+
+.green-line-vertical-top {
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    width: 0.125rem;
+    height: 30%;
+    background-color: #00f595;
+}
+
+.green-line-vertical-bottom {
+    position: absolute;
+    bottom: 15%;
+    left: 10%;
+    width: 0.125rem;
+    height: 40%;
+    background-color: #00f595;
 }
 
 .portfolio-projects {
@@ -297,67 +283,46 @@ footer {
     main {
         padding: 4rem 2rem;
     }
-
     .green-line-vertical-top,
-    .green-line-vertical-bottom {
+    .green-line-vertical-bottom{
         display: none;
     }
 }
-i{
-    right: 12px;
-    position: relative;
+.hy{
+    text-align: center;
+    color: #00b36b;
 }
-/* General styles for the sections */
-section {
-    padding: 20px;
-    margin-bottom: 30px;
-    background-color: #0a0a0a;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.by{
+    color: #00f595;
+    text-align: center;
 }
 
-h2 {
-    color: #333;
-    margin-top: 0;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #0a0a0a;
-    padding-bottom: 10px;
-}
 
-p {
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 10px;
-}
-
-/* Styles for the About section */
 .about {
-    text-align: left; /* Align text to the left */
+    text-align: left; 
 }
 
 .about p {
-    white-space: pre-line; /* Preserve line breaks from HTML */
+    white-space: pre-line; 
 }
 
-/* Styles for the Contact section */
+
 .contact {
-    text-align: left; /* Align text to the left */
+    text-align: left; 
 }
 
 .contact p {
-    white-space: pre-line; /* Preserve line breaks from HTML */
+    white-space: pre-line;
 }
 
 .contact a {
-    color: #007bff; /* Link color */
-    text-decoration: none;
+    color: #007bff; 
 }
 
 .contact a:hover {
     text-decoration: underline;
 }
 
-/* Responsive design (optional) */
 @media (max-width: 768px) {
     section {
         padding: 15px;
@@ -374,11 +339,9 @@ p {
         font-size: 0.9em;
     }
 }
-.hy{
-    text-align: center;
-    color: #00b36b;
-}
-.by{
-    color: #00f595;
-    text-align: center;
+i{
+    right: 12px;
+    position: relative;
+    height: 20px;
+    padding: 1.5rem 0.3rem;
 }
