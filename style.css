@@ -322,7 +322,6 @@ footer .social-media a {
   }
 }
 
-
 .brand-section {
   background-color: #0a0a0a;
   color: #ffffff;
@@ -332,7 +331,7 @@ footer .social-media a {
 
 .section-title {
   font-size: 2.5rem;
-  color: #00ffff; /* or use #00ff7f for green */
+  color: #00ff7f; /* Rolex-style premium green */
   margin-bottom: 10px;
   font-family: 'Poppins', sans-serif;
 }
@@ -362,5 +361,5 @@ footer .social-media a {
 
 .brand-highlights li {
   margin: 10px 0;
-  color: #00ffff;
+  color: #00ff7f; /* Only green for highlights */
 }
