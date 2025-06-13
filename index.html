@@ -18,13 +18,13 @@
     </button>
     <a href="https://devumer.netlify.app/"><div class="logo">umer.dev</div></a>
     <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+  <ul id="primary-navigation">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#your-waisatsu">Brand</a></li> </ul>
+</nav>
   </header>
 
   <main>
@@ -194,8 +194,7 @@
   </main>
 
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-content">
+  <div class="container"> <div class="footer-content">
       <div class="footer-about">
         <h3 class="footer-logo">umer.dev</h3>
         <p>A passionate web developer creating modern and responsive web experiences. Let's build something amazing together.</p>
@@ -207,14 +206,15 @@
           <li><a href="#projects">Projects</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><a href="#your-waisatsu">Brand</a></li>
         </ul>
       </div>
       <div class="footer-social">
         <h3>Connect With Me</h3>
         <div class="social-icons">
-          <a href="https://github.com/Unknownmemon" target="_blank"><i class="fab fa-github"></i></a>
-          <a href="https://web.facebook.com/umer.memon.974981" target="_blank"><i class="fab fa-facebook"></i></a>
-          <a href="https://www.linkedin.com/in/umer-yt-8932b1315/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/Unknownmemon" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://web.facebook.com/umer.memon.974981" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.linkedin.com/in/umer-yt-8932b1315/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
         </div>
       </div>
     </div>
@@ -225,17 +225,38 @@
 </footer>
 
   <script>
-    document.querySelector('#mobile-menu-button').addEventListener('click', () => {
-      document.querySelector('nav ul').classList.toggle('active');
-    });
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileNavButton = document.getElementById('mobile-menu-button');
+    const primaryNavigation = document.getElementById('primary-navigation'); // Target by ID
 
-    document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', e => {
-        e.preventDefault();
-        document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-        document.querySelector('nav ul').classList.remove('active');
+    if (mobileNavButton && primaryNavigation) {
+      mobileNavButton.addEventListener('click', function() {
+        const isExpanded = primaryNavigation.classList.contains('active');
+        primaryNavigation.classList.toggle('active');
+        mobileNavButton.setAttribute('aria-expanded', !isExpanded);
       });
-    });
-  </script>
+
+      // Close nav when a link is clicked (for single-page navigation)
+      primaryNavigation.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          primaryNavigation.classList.remove('active');
+          mobileNavButton.setAttribute('aria-expanded', 'false');
+
+          // Optional: Smooth scroll to section
+          const targetId = link.getAttribute('href');
+          if (targetId.startsWith('#')) {
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+              window.scrollTo({
+                top: targetSection.offsetTop - (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0), // Adjust for fixed header
+                behavior: 'smooth'
+              });
+            }
+          }
+        });
+      });
+    }
+  });
+</script>
 </body>
 </html>
