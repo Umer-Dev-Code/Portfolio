@@ -28,7 +28,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 4rem; /* Adjusted for consistency */
+  padding: 2rem 4rem;
   position: fixed;
   top: 0;
   left: 0;
@@ -37,7 +37,6 @@ header {
   background-color: transparent;
   z-index: 10;
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); /* For Safari support */
 }
 
 .logo {
@@ -52,312 +51,550 @@ nav ul {
   gap: 2rem;
 }
 
-/* Hamburger Menu Icon for Mobile */
-.hamburger-menu {
-  display: none; /* Hidden by default on larger screens */
-  flex-direction: column;
-  justify-content: space-around;
-  width: 30px;
-  height: 25px;
-  cursor: pointer;
-  z-index: 11; /* Ensure it's above other elements */
+nav a {
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  position: relative;
 }
 
-.hamburger-menu span {
-  display: block;
-  width: 100%;
-  height: 3px;
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 2px;
   background-color: #00f595;
-  border-radius: 5px;
-  transition: all 0.3s ease-in-out;
+  transition: width 0.3s ease;
+}
+nav a:hover::after {
+  width: 100%;
 }
 
-/* States for Hamburger Animation (e.g., when active/open) */
-.hamburger-menu.active span:nth-child(1) {
-  transform: translateY(11px) rotate(45deg);
-}
-.hamburger-menu.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger-menu.active span:nth-child(3) {
-  transform: translateY(-11px) rotate(-45deg);
+/* Mobile Nav Toggle */
+.mobile-nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #00f595;
+  cursor: pointer;
 }
 
-/* Hero Section (assuming a .hero class for the main landing section) */
+/* Main */
+main {
+  padding: 6rem 4vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero Section */
 .hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 100px 4rem 80px 4rem; /* Adjusted padding to account for fixed header */
-    min-height: 100vh; /* Make sure it takes full viewport height */
-    text-align: left;
-    gap: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 4rem;
+  margin-bottom: 6rem;
 }
 
 .hero-content {
-    max-width: 600px; /* Constrain content width for better readability */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.kicker {
+  color: #00f595;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .hero-content h1 {
-    font-size: 4.5rem;
-    line-height: 1.1;
-    margin-bottom: 1rem;
-    color: #ffffff;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
 }
 
 .hero-content p {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-    color: #cccccc;
+  font-size: 1.1rem;
+  color: #ddd;
+  max-width: 400px;
 }
 
 .download-button {
-    display: inline-block;
-    background-color: #00f595;
-    color: #0a0a0a;
-    padding: 1rem 2.5rem;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0, 245, 149, 0.4);
+  background-color: #00f595;
+  border: 2px solid #00f595;
+  color: #0a0a0a;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 0.3rem;
+  transition: 0.3s ease;
+  width: fit-content;
 }
 
 .download-button:hover {
-    background-color: #00b36b;
+  background-color: #00b36b;
 }
 
+/* Hero Image */
 .hero-image-container {
-    position: relative;
-    width: 500px; /* Example fixed width, consider making this responsive */
-    height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
-/* Placeholder for the image. Replace with actual image styling if available */
 .hero-image-container img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 245, 149, 0.2);
+  max-width: 80%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
-/* Decorative Green Lines */
-.green-line-vertical-top,
-.green-line-vertical-bottom {
-  position: absolute;
-  width: 2px;
-  background-color: #00f595;
-  opacity: 0.6;
-}
-
-.green-line-vertical-top {
-  height: 100px;
-  top: -50px;
-  right: 50px;
-}
-
-.green-line-vertical-bottom {
-  height: 150px;
-  bottom: -75px;
-  left: 70px;
-}
-
-/* General Section Styling */
-section {
-  padding: 80px 4rem; /* Consistent section padding */
-  margin-bottom: 40px; /* Space between sections */
+/* Portfolio Projects */
+.portfolio-projects {
+  margin-top: 8rem;
   text-align: center;
 }
 
-/* Projects Section (assuming .projects-grid) */
+.portfolio-projects h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #00f595;
+}
+
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
-.project-card {
+.project-item {
   background-color: #1a1a1a;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  text-align: left;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
 }
-
-.project-card h3 {
-  color: #00f595;
+.project-item:hover {
+  transform: translateY(-0.5rem);
+}
+.project-item img {
+  width: 100%;
+  border-radius: 0.3rem;
+  margin-bottom: 1rem;
+}
+.project-item h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
   margin-bottom: 0.5rem;
-  font-size: 1.8rem;
+}
+.project-item p {
+  font-size: 1.1rem;
+  color: #ddd;
+  margin-bottom: 1rem;
+}
+.project-item a {
+  display: inline-block;
+  background-color: #00f595;
+  color: #0a0a0a;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.3rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+.project-item a:hover {
+  background-color: #00b36b;
 }
 
-.project-card p {
-  color: #cccccc;
-  font-size: 1rem;
-}
-
-/* Brand Section */
+/*=============================================
+=            Brand Section Styles             =
+=============================================*/
 .brand-section {
+  padding: 6rem 4vw;
+  background-color: #111;
+}
+
+.brand-showcase {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  gap: 4rem;
+  background-color: #1a1a1a;
+  padding: 4rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.brand-logo img {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 50%;
+  border: 4px solid #00f595;
+}
+
+.brand-details .section-title {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.brand-details .section-subtitle {
+  text-align: left;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+.brand-description {
+  margin-bottom: 2rem;
+  color: #ddd;
+  font-size: 1.1rem;
+}
+
+.brand-highlights {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.brand-highlights span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #00f595;
+  font-weight: 500;
+}
+
+.brand-links a {
+  background-color: transparent;
+  border: 2px solid #00f595;
+  color: #00f595;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-right: 1rem;
+}
+
+.brand-links a:hover {
+  background-color: #00f595;
+  color: #0a0a0a;
+}
+
+/*=============================================
+=             About Section Styles            =
+=============================================*/
+.about-section {
+  padding: 6rem 4vw;
   background-color: #0a0a0a;
-  color: #ffffff;
-  padding: 80px 20px; /* Already present, keeping */
+}
+
+.about-section .section-title {
+  text-align: center;
+  color: #00f595;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  gap: 4rem;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  color: #ddd;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  max-width: 650px;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/*=============================================
+=            Contact Section Styles           =
+=============================================*/
+.contact-section {
+  padding: 6rem 4vw;
+  text-align: center;
+}
+
+.contact-section .section-title {
+  color: #00f595;
+  margin-bottom: 1rem;
+}
+
+.contact-section .section-subtitle {
+  color: #ccc;
+  margin-bottom: 4rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.contact-item {
+  background-color: #1a1a1a;
+  padding: 2.5rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 245, 149, 0.1);
+}
+
+.contact-item i {
+  font-size: 2.5rem;
+  color: #00f595;
+  margin-bottom: 1.5rem;
+}
+
+.contact-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #f1f1f1;
+}
+
+.contact-item a {
+  color: #00f595;
+  font-size: 1.1rem;
+}
+
+/*=============================================
+=             Footer Section Styles           =
+=============================================*/
+.site-footer {
+  background-color: #111;
+  color: #aaa;
+  padding: 4rem 4vw 2rem;
+  border-top: 1px solid #222;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #00f595;
+  margin-bottom: 1rem;
+}
+
+.footer-about p {
+  line-height: 1.7;
+  max-width: 300px;
+}
+
+.footer-links h3,
+.footer-social h3 {
+  font-size: 1.4rem;
+  color: #f1f1f1;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.footer-links h3::after,
+.footer-social h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 40px;
+  height: 2px;
+  background-color: #00f595;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-links ul a {
+  color: #aaa;
+  transition: color 0.3s ease;
+}
+
+.footer-links ul a:hover {
+  color: #00f595;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.social-icons a {
+  color: #aaa;
+  font-size: 1.8rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #00f595;
+  transform: scale(1.2);
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #222;
+  padding-top: 2rem;
+  font-size: 0.9rem;
 }
 
 
-/* ======================================= */
-/* Responsive Design - Media Queries */
-/* ======================================= */
-
-@media (max-width: 1024px) {
-    .hero {
-        padding: 100px 2rem 80px 2rem;
-        gap: 2rem;
-    }
-
-    .hero-content h1 {
-        font-size: 3.5rem;
-    }
-
-    .hero-content p {
-        font-size: 1.1rem;
-    }
-
-    .hero-image-container {
-        width: 400px;
-        height: 400px;
-    }
-
-    section {
-        padding: 60px 2rem;
-    }
-}
-
-
+/* MEDIA QUERY – Mobile & Tablets */
 @media (max-width: 768px) {
   header {
-    padding: 1rem 15px;
-    height: auto;
-    flex-wrap: wrap; /* Allows logo and menu to wrap */
-    justify-content: space-between; /* Space out logo and hamburger */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
   }
 
-  nav {
-    width: 100%; /* Nav takes full width below logo */
-    order: 1; /* Puts nav below logo and hamburger */
-    text-align: center;
+  .mobile-nav-toggle {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    z-index: 20;
   }
 
   nav ul {
-    display: none; /* Hide nav links by default on mobile */
+    display: none;
     flex-direction: column;
-    width: 100%;
-    padding: 20px 0;
-    /* This background was previously on ul.active, moved here for clarity */
-    background-color: rgba(10, 10, 10, 0.9);
-    position: absolute; /* Position relative to header */
-    top: 100px; /* Position below the header */
-    left: 0;
     gap: 1.5rem;
+    position: absolute;
+    top: 100px;
+    right: 0;
+    background-color: #111;
+    width: 100%;
+    padding: 2rem;
+    align-items: center;
+    text-align: center;
   }
 
   nav ul.active {
-    display: flex; /* Show nav links when active */
+    display: flex;
   }
 
-  .hamburger-menu {
-    display: flex; /* Show hamburger menu on mobile */
-  }
-
-  .logo {
-    font-size: 2rem;
-  }
-
-  /* Hero Section */
   .hero {
-    flex-direction: column; /* Stack content vertically */
+    flex-direction: column;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center; /* Center text content */
+    text-align: center;
     gap: 3rem;
-    padding-top: 120px; /* Adjust padding for fixed header */
-    padding-bottom: 60px;
-    min-height: auto; /* Allow height to adjust */
   }
 
   .hero-content,
   .hero-content p,
   .hero-content h1 {
-    text-align: center; /* Ensures text is centered */
-    /* Removed 'align-items: center' as it's for flex/grid items, not text alignment */
-  }
-
-  .hero-content h1 {
-    font-size: 3rem; /* Further reduce font size for smaller screens */
-  }
-
-  .hero-content p {
-    font-size: 1rem;
+    text-align: center;
+    align-items: center;
   }
 
   .download-button {
-    margin: 0 auto; /* Correctly centers the button */
-    /* Removed 'left: 0;' as it's ineffective without position: relative/absolute */
+    margin: 0 auto;
+    left: 0;
   }
 
   .hero-image-container {
-    order: -1; /* Move image above text on mobile */
+    order: -1;
     justify-content: center;
-    width: 300px; /* Smaller width for mobile */
-    height: 300px;
   }
-
-  /* Hide decorative lines on small screens */
-  .green-line-vertical-top,
-  .green-line-vertical-bottom {
-    display: none;
-  }
-
-  /* General Section Adjustments */
+  
   section {
-    padding: 40px 15px; /* Adjust padding for all sections */
+    padding: 15px;
     margin-bottom: 20px;
     text-align: center;
   }
 
   .projects-grid {
-    grid-template-columns: 1fr; /* Stack projects in a single column */
+    grid-template-columns: 1fr;
   }
 
-  /* Ensure text in behance-brothers is centered on mobile */
   #behance-brothers > div {
     text-align: center;
   }
-}
 
-/* Extra small screens (e.g., mobile landscape) */
-@media (max-width: 480px) {
-    .logo {
-        font-size: 1.8rem;
-    }
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-    .hero-content p {
-        font-size: 0.9rem;
-    }
-    .download-button {
-        padding: 0.8rem 2rem;
-        font-size: 1rem;
-    }
-    .hero-image-container {
-        width: 250px;
-        height: 250px;
-    }
-    section {
-        padding: 30px 10px;
-    }
+  /* ... other mobile styles ... */
+
+  .brand-showcase {
+    grid-template-columns: 1fr;
+    padding: 2.5rem 1.5rem; /* Adjusted padding for mobile */
+    gap: 2rem; /* Reduced gap for mobile */
+    text-align: center; /* Center-align text content */
+  }
+
+  .brand-logo img {
+    margin: 0 auto 2rem auto; /* Center the logo and add space below */
+  }
+
+  .brand-details .section-title,
+  .brand-details .section-subtitle {
+    text-align: center;
+  }
+
+  .brand-highlights {
+    flex-direction: column; /* Stack highlights vertically */
+    align-items: center; /* Center-align them */
+    gap: 1rem;
+  }
+
+  .brand-links {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* ... other mobile styles ... */
+}
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-content {
+    text-align: center;
+  }
+
+  .footer-about p {
+    margin: 0 auto;
+  }
+  
+  .footer-links h3::after,
+  .footer-social h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
 }
