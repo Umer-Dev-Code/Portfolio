@@ -211,35 +211,262 @@ main {
   background-color: #00b36b;
 }
 
-/* About + Contact Sections */
-.hy {
-  text-align: center;
-  color: #00b36b;
-}
-.by {
-  color: #00f595;
-  text-align: center;
-}
-.about, .contact {
-  text-align: center;
-}
-.about p, .contact p {
-  white-space: pre-line;
+/*=============================================
+=            Brand Section Styles             =
+=============================================*/
+.brand-section {
+  padding: 6rem 4vw;
+  background-color: #111;
 }
 
-/* Footer */
-footer {
-  padding: 3rem 0;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #aaa;
-  margin-top: auto;
+.brand-showcase {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  gap: 4rem;
+  background-color: #1a1a1a;
+  padding: 4rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
-footer .social-media a {
-  display: block;
+
+.brand-logo img {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 50%;
+  border: 4px solid #00f595;
+}
+
+.brand-details .section-title {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.brand-details .section-subtitle {
+  text-align: left;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+.brand-description {
+  margin-bottom: 2rem;
+  color: #ddd;
+  font-size: 1.1rem;
+}
+
+.brand-highlights {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.brand-highlights span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   color: #00f595;
-  margin: 0.5rem 0;
+  font-weight: 500;
 }
+
+.brand-links a {
+  background-color: transparent;
+  border: 2px solid #00f595;
+  color: #00f595;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-right: 1rem;
+}
+
+.brand-links a:hover {
+  background-color: #00f595;
+  color: #0a0a0a;
+}
+
+/*=============================================
+=             About Section Styles            =
+=============================================*/
+.about-section {
+  padding: 6rem 4vw;
+  background-color: #0a0a0a;
+}
+
+.about-section .section-title {
+  text-align: center;
+  color: #00f595;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  gap: 4rem;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  color: #ddd;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  max-width: 650px;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/*=============================================
+=            Contact Section Styles           =
+=============================================*/
+.contact-section {
+  padding: 6rem 4vw;
+  text-align: center;
+}
+
+.contact-section .section-title {
+  color: #00f595;
+  margin-bottom: 1rem;
+}
+
+.contact-section .section-subtitle {
+  color: #ccc;
+  margin-bottom: 4rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.contact-item {
+  background-color: #1a1a1a;
+  padding: 2.5rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 245, 149, 0.1);
+}
+
+.contact-item i {
+  font-size: 2.5rem;
+  color: #00f595;
+  margin-bottom: 1.5rem;
+}
+
+.contact-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #f1f1f1;
+}
+
+.contact-item a {
+  color: #00f595;
+  font-size: 1.1rem;
+}
+
+/*=============================================
+=             Footer Section Styles           =
+=============================================*/
+.site-footer {
+  background-color: #111;
+  color: #aaa;
+  padding: 4rem 4vw 2rem;
+  border-top: 1px solid #222;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #00f595;
+  margin-bottom: 1rem;
+}
+
+.footer-about p {
+  line-height: 1.7;
+  max-width: 300px;
+}
+
+.footer-links h3,
+.footer-social h3 {
+  font-size: 1.4rem;
+  color: #f1f1f1;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.footer-links h3::after,
+.footer-social h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 40px;
+  height: 2px;
+  background-color: #00f595;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-links ul a {
+  color: #aaa;
+  transition: color 0.3s ease;
+}
+
+.footer-links ul a:hover {
+  color: #00f595;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.social-icons a {
+  color: #aaa;
+  font-size: 1.8rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #00f595;
+  transform: scale(1.2);
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #222;
+  padding-top: 2rem;
+  font-size: 0.9rem;
+}
+
 
 /* MEDIA QUERY – Mobile & Tablets */
 @media (max-width: 768px) {
@@ -301,12 +528,7 @@ footer .social-media a {
     order: -1;
     justify-content: center;
   }
-
-  .green-line-vertical-top,
-  .green-line-vertical-bottom {
-    display: none;
-  }
-
+  
   section {
     padding: 15px;
     margin-bottom: 20px;
@@ -320,46 +542,36 @@ footer .social-media a {
   #behance-brothers > div {
     text-align: center;
   }
-}
 
-.brand-section {
-  background-color: #0a0a0a;
-  color: #ffffff;
-  padding: 80px 20px;
-  text-align: center;
-}
+  .brand-showcase {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+  }
 
-.section-title {
-  font-size: 2.5rem;
-  color: #00ff7f; /* Rolex-style premium green */
-  margin-bottom: 10px;
-  font-family: 'Poppins', sans-serif;
-}
+  .brand-details .section-title,
+  .brand-details .section-subtitle {
+    text-align: center;
+  }
 
-.section-subtitle {
-  font-size: 1.2rem;
-  color: #cccccc;
-  margin-bottom: 40px;
-}
+  .about-content {
+    grid-template-columns: 1fr;
+  }
 
-.brand-logo {
-  width: 150px;
-  margin: 0 auto 20px;
-}
+  .footer-content {
+    text-align: center;
+  }
 
-.brand-description {
-  max-width: 700px;
-  margin: 0 auto 20px;
-  line-height: 1.6;
-}
+  .footer-about p {
+    margin: 0 auto;
+  }
+  
+  .footer-links h3::after,
+  .footer-social h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
-.brand-highlights {
-  list-style: none;
-  padding: 0;
-  font-family: 'Fira Code', monospace;
-}
-
-.brand-highlights li {
-  margin: 10px 0;
-  color: #00ff7f; /* Only green for highlights */
+  .social-icons {
+    justify-content: center;
+  }
 }
