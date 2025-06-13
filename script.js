@@ -24,7 +24,39 @@ document.querySelectorAll('nav a').forEach(anchor => {
     });
 });
 
-// 2. Highlight Active Navigation Link on Scroll
+// 2. Highlight Active Navigation Link on Scroll<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileNavButton = document.getElementById('mobile-menu-button');
+    const primaryNavigation = document.getElementById('primary-navigation'); // Target by ID
+
+    if (mobileNavButton && primaryNavigation) {
+      mobileNavButton.addEventListener('click', function() {
+        const isExpanded = primaryNavigation.classList.contains('active');
+        primaryNavigation.classList.toggle('active');
+        mobileNavButton.setAttribute('aria-expanded', !isExpanded);
+      });
+
+      // Close nav when a link is clicked (for single-page navigation)
+      primaryNavigation.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          primaryNavigation.classList.remove('active');
+          mobileNavButton.setAttribute('aria-expanded', 'false');
+
+          // Optional: Smooth scroll to section
+          const targetId = link.getAttribute('href');
+          if (targetId.startsWith('#')) {
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+              window.scrollTo({
+                top: targetSection.offsetTop - (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0), // Adjust for fixed header
+                behavior: 'smooth'
+              });
+            }
+          }
+        });
+      });
+    }
+  });
 function updateActiveNavLink() {
     const sections = document.querySelectorAll('section'); // Get all sections
     const navLinks = document.querySelectorAll('nav a'); // Get all nav links
