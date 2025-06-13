@@ -2,7 +2,7 @@
 
 Welcome to my personal portfolio website! This is a fully responsive, modern portfolio built with **HTML**, **CSS**, and **JavaScript** — designed to showcase my projects, skills, and contact information in a sleek and interactive way.
 
-![Screenshot](abstract.png)
+!
 
 ## 🔗 Live Demo
 
@@ -30,7 +30,7 @@ Welcome to my personal portfolio website! This is a fully responsive, modern por
 ## 📬 Contact Me
 
 - 📧 **Email:** umery101@gmail.com  
-- 📱 **Phone:** +92-3352110872  
+- 📱 **Phone:** +92-161395147  
 - 🌐 **Portfolio:** [devumer.netlify.app](https://devumer.netlify.app)  
 - 💼 [LinkedIn](https://www.linkedin.com/in/umer-yt-8932b1315/)  
 - 🐱 [GitHub](https://github.com/Unknownmemon)  
