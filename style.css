@@ -1,23 +1,24 @@
 :root {
-  /* Your Custom Cyberpunk Color Palette */
-  --dark-bg: #0a0a0a;
-  --medium-dark-bg: #1a1a1a;
-  --primary-color: #00f595;  /* Neon Green */
-  --accent-color: #ff2a6d;   /* Pink */
-  --cyber-blue: #05d9e8;
-  --text-color: #f1f1f1;
-  --neon-pink: #ff2a6d;
-  --neon-purple: #d300c5;
+  /* Vaporwave Midnight */
+  --dark-bg: #120A1A; /* Deep eggplant purple-black */
+  --medium-dark-bg: #2B1D3D; /* Muted deep purple */
+  --primary-color: #9D00FF; /* Electric Violet - bold and distinct */
+  --accent-color: #00FFFF; /* Bright Cyan - sharp and contrasting */
+  --cyber-blue: #8AE6FF; /* Light, airy sky blue */
+  --text-color: #F8F8FF; /* Ghost white for clarity */
+  --neon-pink: #FF6EC7; /* Classic bright magenta-pink */
+  --neon-purple: #C28AF0; /* Softer lavender purple */
 
   /* Glow Effects */
-  --glow-primary: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
-  --glow-accent: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color);
-  --glow-blue: 0 0 10px var(--cyber-blue), 0 0 20px var(--cyber-blue);
+  --glow-primary: 0 0 18px var(--primary-color), 0 0 35px var(--primary-color);
+  --glow-accent: 0 0 18px var(--accent-color), 0 0 35px var(--accent-color);
+  --glow-blue: 0 0 12px var(--cyber-blue), 0 0 24px var(--cyber-blue);
   
   /* Gradients */
   --gradient-primary: linear-gradient(45deg, var(--primary-color), var(--cyber-blue));
-  --gradient-accent: linear-gradient(45deg, var(--accent-color), var(--neon-purple));
+  --gradient-accent: linear-gradient(45deg, var(--accent-color), var(--neon-pink));
 }
+
 
 * {
   margin: 0;
