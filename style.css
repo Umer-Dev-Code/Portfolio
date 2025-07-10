@@ -224,11 +224,12 @@ nav a:hover::after {
   100% { transform: translateY(0px); }
 }
 
-/* Download Button */
+/* Styling for individual buttons */
+/* Styling for individual buttons */
 .download-button {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.5rem; /* Gap between icon and text inside the button */
   padding: 0.8rem 1.5rem;
   background: var(--gradient-primary);
   color: var(--dark-bg);
@@ -241,6 +242,15 @@ nav a:hover::after {
   overflow: hidden;
   transition: all 0.3s ease;
   box-shadow: 0 0 15px rgba(0, 245, 149, 0.5);
+
+  /* Add margin to the right of each button */
+  margin-right: 1.5rem; /* This creates the space between the buttons */
+  margin-bottom: 1rem; /* Add a small bottom margin for responsiveness on smaller screens if they wrap */
+}
+
+/* Remove margin from the last button in a group to prevent extra space */
+.download-button:last-of-type {
+    margin-right: 0;
 }
 
 .download-button:hover {
@@ -261,6 +271,25 @@ nav a:hover::after {
 
 .download-button:hover::before {
   left: 100%;
+}
+
+/* Optional: Add a container to manage overall alignment and wrapping if needed */
+/* If you keep the .button-group div, you can simplify the .download-button margin */
+.button-container { /* Renamed from .button-group to avoid conflict or confusion */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem; /* This gap will handle spacing if you prefer flexbox, override individual margins */
+    margin-top: 2rem;
+    align-items: center;
+}
+
+/* Media query for responsiveness (adjust as needed) */
+@media (max-width: 576px) {
+  .button-container {
+    flex-direction: column; /* Stack buttons vertically on very small screens */
+    gap: 1rem; /* Adjust vertical gap when stacked */
+    align-items: center; /* Center stacked buttons */
+  }
 }
 
 /*  /* Projects Section */
