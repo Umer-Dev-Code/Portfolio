@@ -1,109 +1,135 @@
-document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
+document.addEventListener('DOMContentLoaded', function () {
+  const mobileNavButton = document.getElementById('mobile-menu-button');
+  const primaryNavigation = document.getElementById('primary-navigation');
 
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+  // Check if both elements exist before adding event listeners
+  if (mobileNavButton && primaryNavigation) {
+    mobileNavButton.addEventListener('click', function () {
+      // Toggle the 'active' class on the navigation to show/hide it
+      const isExpanded = primaryNavigation.classList.contains('active');
+      primaryNavigation.classList.toggle('active');
+      // Update aria-expanded for accessibility
+      mobileNavButton.setAttribute('aria-expanded', !isExpanded);
+
+      // Toggle icon between bars (menu closed) and times (menu open)
+      const icon = mobileNavButton.querySelector('i');
+      if (isExpanded) {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      } else {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      }
     });
-});
 
-// 1. Smooth Scrolling
-document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault(); // Prevent default scroll behavior
-
-        const targetId = this.getAttribute('href'); // Get the target section's ID
-        const targetElement = document.querySelector(targetId); // Find the target element
-
-        if (targetElement) {
-            targetElement.scrollIntoView({ // Scroll smoothly to the target
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// 2. Highlight Active Navigation Link on Scroll<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const mobileNavButton = document.getElementById('mobile-menu-button');
-    const primaryNavigation = document.getElementById('primary-navigation'); // Target by ID
-
-    if (mobileNavButton && primaryNavigation) {
-      mobileNavButton.addEventListener('click', function() {
-        const isExpanded = primaryNavigation.classList.contains('active');
-        primaryNavigation.classList.toggle('active');
-        mobileNavButton.setAttribute('aria-expanded', !isExpanded);
+    // Close nav when a navigation link is clicked (for single-page navigation)
+    primaryNavigation.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        primaryNavigation.classList.remove('active'); // Hide the navigation
+        mobileNavButton.setAttribute('aria-expanded', 'false'); // Reset aria-expanded
+        // Reset icon to bars
+        const icon = mobileNavButton.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
       });
+    });
+  }
 
-      // Close nav when a link is clicked (for single-page navigation)
-      primaryNavigation.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          primaryNavigation.classList.remove('active');
-          mobileNavButton.setAttribute('aria-expanded', 'false');
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault(); // Prevent default anchor click behavior
 
-          // Optional: Smooth scroll to section
-          const targetId = link.getAttribute('href');
-          if (targetId.startsWith('#')) {
-            const targetSection = document.querySelector(targetId);
-            if (targetSection) {
-              window.scrollTo({
-                top: targetSection.offsetTop - (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0), // Adjust for fixed header
-                behavior: 'smooth'
-              });
-            }
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement) {
+        // Scroll to the target element with a smooth animation
+        // Offset by 80px to account for the fixed header
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+
+        // Update active link in navigation
+        document.querySelectorAll('nav a').forEach(link => {
+          link.classList.remove('active-link'); // Remove active from all links
+        });
+        this.classList.add('active-link'); // Add active to the clicked link
+      }
+    });
+  });
+
+  // Highlight active section in navigation based on scroll position
+  window.addEventListener('scroll', function () {
+    const scrollPosition = window.scrollY + 100; // Add offset for fixed header
+
+    document.querySelectorAll('section').forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
+
+      // Check if current scroll position is within the section
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        document.querySelectorAll('nav a').forEach(link => {
+          link.classList.remove('active-link'); // Remove active from all links
+          // Add active class to the link corresponding to the current section
+          if (link.getAttribute('href') === `#${sectionId}`) {
+            link.classList.add('active-link');
           }
         });
-      });
-    }
+      }
+    });
   });
-function updateActiveNavLink() {
-    const sections = document.querySelectorAll('section'); // Get all sections
-    const navLinks = document.querySelectorAll('nav a'); // Get all nav links
-    let currentSectionId = '';
 
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
-            currentSectionId = section.getAttribute('id');
-        }
-    });
+  // Initialize active link on page load
+  // Checks if there's a hash in the URL (e.g., #about)
+  const currentHash = window.location.hash;
+  if (currentHash) {
+    const activeLink = document.querySelector(`nav a[href="${currentHash}"]`);
+    if (activeLink) {
+      document.querySelectorAll('nav a').forEach(link => {
+        link.classList.remove('active-link');
+      });
+      activeLink.classList.add('active-link');
+    }
+  } else {
+    // If no hash, default to 'Home' as active
+    document.querySelector('nav a[href="#home"]').classList.add('active-link');
+  }
 
-    navLinks.forEach(link => {
-        link.classList.remove('active'); // Remove 'active' class from all links
-        if (link.getAttribute('href').slice(1) === currentSectionId) {
-            link.classList.add('active'); // Add 'active' class to the current link
-        }
-    });
-}
+  // Typing text animation for the hero section
+  const textElement = document.querySelector('.animated-text');
+  const words = ["Web Developer", "Software Engineer", "UI/UX Designer", "Freelancer"];
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
 
-window.addEventListener('scroll', updateActiveNavLink); // Listen for scroll events
+  function type() {
+    const currentWord = words[wordIndex];
+    // Determine text to display: either typing or deleting
+    const displayText = isDeleting
+      ? currentWord.substring(0, charIndex - 1)
+      : currentWord.substring(0, charIndex + 1);
 
-// 3. Reveal Elements on Scroll (Optional - for more dynamic effects)
-function revealElements() {
-    const elementsToReveal = document.querySelectorAll('.reveal'); // Add a class 'reveal' to elements you want to animate
-    
-    elementsToReveal.forEach(element => {
-        const elementTop = element.offsetTop;
-        const windowHeight = window.innerHeight;
-        
-        if (elementTop < window.scrollY + windowHeight - 100) {
-            element.classList.add('active'); // Add 'active' class to trigger animation
-        } else {
-            element.classList.remove('active'); // Remove 'active' class if not in view
-        }
-    });
-}
+    textElement.textContent = displayText;
 
-// window.addEventListener('scroll', revealElements); //listen to scroll
-
-// 4. Mobile Menu Toggle (Optional - if you have a mobile menu)
-const mobileMenuButton = document.getElementById('mobile-menu-button'); //  ID for your mobile menu button
-const navMenu = document.querySelector('nav ul'); //  querySelector for your nav menu
-
-if (mobileMenuButton && navMenu) { // Check if elements exist
-    mobileMenuButton.addEventListener('click', () => {
-        navMenu.classList.toggle('active'); // Toggle a class to show/hide the menu
-    });
-}
+    // Typing logic
+    if (!isDeleting && charIndex < currentWord.length) {
+      charIndex++;
+      setTimeout(type, 100); // Speed of typing
+    }
+    // Deleting logic
+    else if (isDeleting && charIndex > 0) {
+      charIndex--;
+      setTimeout(type, 50); // Speed of deleting
+    }
+    // Switch between typing and deleting, and move to next word
+    else {
+      isDeleting = !isDeleting;
+      wordIndex = !isDeleting ? (wordIndex + 1) % words.length : wordIndex;
+      setTimeout(type, 1000); // Pause before next action
+    }
+  }
+  type(); // Start the typing animation when the page loads
+});

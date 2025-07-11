@@ -6,7 +6,7 @@ Welcome to my personal portfolio website! This is a fully responsive, modern por
 
 ## 🔗 Live Demo
 
-👉 [aspect-tech.netlify.app](https://aspect-tech.netlify.app/)
+👉 [umer-memon.netlify.app](https://umer-memon.netlify.app/)
 
 ## 📂 Features
 
@@ -31,9 +31,9 @@ Welcome to my personal portfolio website! This is a fully responsive, modern por
 
 - 📧 **Email:** umery101@gmail.com  
 - 📱 **Phone:** +92-161395147  
-- 🌐 **Portfolio:** [https://aspect-tech.netlify.app/](https://aspect-tech.netlify.app/)  
+- 🌐 **Portfolio:** [https://umer-memon.netlify.app/](https://umer-memon.netlify.app/)  
 - 💼 [LinkedIn](https://www.linkedin.com/in/umer-yt-8932b1315/)  
-- 🐱 [GitHub](https://github.com/Unknownmemon)  
+- 🐱 [GitHub](https://github.com/Dev-Umer-Code)  
 - 🌐 [Facebook](https://web.facebook.com/umer.memon.974981)
 
 ## 📃 License

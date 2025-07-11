@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,8 +12,12 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;700&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="icon" href="./images/image.png" type="image/png" sizes="16x16" />
+  <link rel="icon" href="images/icon.svg" type="image/png" sizes="16x16" />
   <link rel="stylesheet" href="style.css">
+  <!-- Spline Viewer Script -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.26/build/spline-viewer.js"></script>
+  <!-- Three.js Library (kept for potential future use or if other Three.js elements are desired) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 
 <body>
@@ -20,7 +25,7 @@
     <button id="mobile-menu-button" class="mobile-nav-toggle" aria-label="Toggle menu">
       <i class="fa fa-bars"></i>
     </button>
-    <a href="https://aspect-tech.netlify.app/" class="logo">UMER</a>
+    <a href="#home" class="logo">UMER</a>
     <nav>
       <ul id="primary-navigation">
         <li><a href="#home" class="active-link">Home</a></li>
@@ -37,20 +42,22 @@
       <div class="container">
         <div class="hero-content">
           <h1>Umer Memon</h1>
-          <p>I'm Umer, a web developer from Karachi. I love creating clean, responsive websites using HTML, CSS, and
+          <p class="typing-text">I'm Umer, a <span class="animated-text"></span> from Karachi. I love creating clean, responsive websites using HTML, CSS, and
             JavaScript. I'm always exploring new tools and designs to improve my skills and build modern, user-friendly
             web experiences.</p>
           <div class="button-container">
             <a href="https://www.linkedin.com/in/umer-yt-30610236a/" class="download-button" target="_blank"
               rel="noopener noreferrer">Hire me</a>
-            <a href="./path/to/your/resume.pdf" class="download-button" download>Download Resume</a>
+            <a href="./images/umer-Resume.pdf" class="download-button" download>Download Resume</a>
           </div>
         </div>
         <div class="hero-image-container">
-          <img src="./images/My ghibili image.png" alt="Abstract Portfolio Image" loading="lazy" />
+          <!-- Spline Robot will be placed here -->
+          <spline-viewer url="https://prod.spline.design/1a4lmCTHv13Tu4lF/scene.splinecode"></spline-viewer>
         </div>
       </div>
     </section>
+
     <section id="projects" class="portfolio-projects">
       <div class="container">
         <h2>Featured Projects</h2>
@@ -92,7 +99,7 @@
             </div>
           </div>
           <div class="project-item">
-            <img src="./images/Screenshot (2).png" alt="CSS-styled chess board" loading="lazy" />
+            <img src="./images/Screenshot (2).png"alt="CSS-styled chess board" loading="lazy" />
             <div class="project-content">
               <h3>Star Bucks Clone by UMER</h3>
               <p>Pure HTML and CSS Starbucks clone, styled to perfection force practice.</p>
@@ -110,11 +117,11 @@
             </div>
           </div>
           <div class="project-item">
-            <img src="./images/first porfolio.png" alt="First portfolio website design" loading="lazy" />
+            <img src="./images/my first portfolio.png" alt="First portfolio website design" loading="lazy" />
             <div class="project-content">
               <h3>First Portfolio</h3>
               <p>My original portfolio showcasing beginner-level design and structure.</p>
-              <a href="https://amongusbyumer.netlify.app/" target="_blank" rel="noopener noreferrer"
+              <a href="https://nextgenbyumer.netlify.app/" target="_blank" rel="noopener noreferrer"
                 class="project-link">View Project</a>
             </div>
           </div>
@@ -139,8 +146,6 @@
         </div>
       </div>
     </section>
-
-    
 
     <section id="behance-brothers" class="portfolio-projects">
       <div class="container">
@@ -184,7 +189,8 @@
             </p>
           </div>
           <div class="about-image">
-            <img src="./images/Abstract.png" alt="Umer Memon" loading="lazy" />
+            <!-- Spline 3D Car Model -->
+            <!-- <spline-viewer url="https://prod.spline.design/c-pOBBZdOtEn93ud/scene.splinecode"></spline-viewer> -->
           </div>
         </div>
       </div>
@@ -212,138 +218,46 @@
               rel="noopener noreferrer">aspect-tech.netlify.app</a>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-about">
-          <h3 class="footer-logo">umer.dev</h3>
-          <p>A passionate web developer creating modern and responsive web experiences. Let's build something amazing
-            together.</p>
-        </div>
-        <div class="footer-links">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#behance-brothers">Brand</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-social">
-          <h3>Connect With Me</h3>
-          <div class="social-icons">
-            <a href="https://github.com/Unknownmemon" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i
-                class="fab fa-github"></i></a>
-            <a href="https://web.facebook.com/umer.memon.974981" target="_blank" rel="noopener noreferrer"
-              aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.linkedin.com/in/umer-yt-8932b1315/" target="_blank" rel="noopener noreferrer"
-              aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-about">
+            <h3 class="footer-logo">umer.dev</h3>
+            <p>A passionate web developer creating modern and responsive web experiences. Let's build something amazing
+              together.</p>
+          </div>
+          <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#behance-brothers">Brand</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-social">
+            <h3>Connect With Me</h3>
+            <div class="social-icons">
+              <a href="https://github.com/Umer-Dev-Code" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i
+                  class="fab fa-github"></i></a>
+              <a href="https://web.facebook.com/umer.memon.974981" target="_blank" rel="noopener noreferrer"
+                aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="https://www.linkedin.com/in/umer-yt-8932b1315/" target="_blank" rel="noopener noreferrer"
+                aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
           </div>
         </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Umer Dev. All rights reserved.</p>
+        </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Umer Dev. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const mobileNavButton = document.getElementById('mobile-menu-button');
-      const primaryNavigation = document.getElementById('primary-navigation');
+    <script src="script.js"></script>
+  </body>
 
-      if (mobileNavButton && primaryNavigation) {
-        mobileNavButton.addEventListener('click', function () {
-          const isExpanded = primaryNavigation.classList.contains('active');
-          primaryNavigation.classList.toggle('active');
-          mobileNavButton.setAttribute('aria-expanded', !isExpanded);
-
-          // Toggle icon between bars and times
-          const icon = mobileNavButton.querySelector('i');
-          if (isExpanded) {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-          } else {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-          }
-        });
-
-        // Close nav when a link is clicked (for single-page navigation)
-        primaryNavigation.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', () => {
-            primaryNavigation.classList.remove('active');
-            mobileNavButton.setmobileNavButton.setAttribute('aria-expanded', 'false');
-            const icon = mobileNavButton.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-          });
-        });
-      }
-
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-
-          const targetId = this.getAttribute('href');
-          const targetElement = document.querySelector(targetId);
-
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: 'smooth'
-            });
-
-            // Update active link
-            document.querySelectorAll('nav a').forEach(link => {
-              link.classList.remove('active-link');
-            });
-            this.classList.add('active-link');
-          }
-        });
-      });
-
-      // Highlight active section in navigation
-      window.addEventListener('scroll', function () {
-        const scrollPosition = window.scrollY + 100;
-
-        document.querySelectorAll('section').forEach(section => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.offsetHeight;
-          const sectionId = section.getAttribute('id');
-
-          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            document.querySelectorAll('nav a').forEach(link => {
-              link.classList.remove('active-link');
-              if (link.getAttribute('href') === `#${sectionId}`) {
-                link.classList.add('active-link');
-              }
-            });
-          }
-        });
-      });
-
-      // Initialize active link on page load
-      const currentHash = window.location.hash;
-      if (currentHash) {
-        const activeLink = document.querySelector(`nav a[href="${currentHash}"]`);
-        if (activeLink) {
-          document.querySelectorAll('nav a').forEach(link => {
-            link.classList.remove('active-link');
-          });
-          activeLink.classList.add('active-link');
-        }
-      } else {
-        document.querySelector('nav a[href="#home"]').classList.add('active-link');
-      }
-    });
-  </script>
-</body>
-
-</html>
+  </html>
