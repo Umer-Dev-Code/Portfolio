@@ -1,20 +1,16 @@
 :root {
   /* Vaporwave Midnight */
-  --dark-bg: #120A1A; /* Deep eggplant purple-black */
-  --medium-dark-bg: #2B1D3D; /* Muted deep purple */
-  --primary-color: #9D00FF; /* Electric Violet - bold and distinct */
-  --accent-color: #00FFFF; /* Bright Cyan - sharp and contrasting */
-  --cyber-blue: #8AE6FF; /* Light, airy sky blue */
-  --text-color: #F8F8FF; /* Ghost white for clarity */
-  --neon-pink: #FF6EC7; /* Classic bright magenta-pink */
-  --neon-purple: #C28AF0; /* Softer lavender purple */
-
-  /* Glow Effects */
+  --dark-bg: #120A1A;
+  --medium-dark-bg: #2B1D3D;
+  --primary-color: #9D00FF;
+  --accent-color: #00FFFF;
+  --cyber-blue: #8AE6FF;
+  --text-color: #F8F8FF;
+  --neon-pink: #FF6EC7;
+  --neon-purple: #C28AF0;
   --glow-primary: 0 0 18px var(--primary-color), 0 0 35px var(--primary-color);
   --glow-accent: 0 0 18px var(--accent-color), 0 0 35px var(--accent-color);
   --glow-blue: 0 0 12px var(--cyber-blue), 0 0 24px var(--cyber-blue);
-  
-  /* Gradients */
   --gradient-primary: linear-gradient(45deg, var(--primary-color), var(--cyber-blue));
   --gradient-accent: linear-gradient(45deg, var(--accent-color), var(--neon-pink));
 }
@@ -30,14 +26,14 @@
 }
 
 html {
-    font-size: 62.5%; /* 1rem = 10px */
+    font-size: 62.5%;
     scroll-behavior: smooth;
 }
 
 body {
     width: 100%;
     min-height: 100vh;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden;
     background-color: var(--dark-bg);
     color: var(--text-color);
 }
@@ -49,19 +45,19 @@ body {
 }
 
 header {
-    margin-top: 20px; /* Space from top */
+    margin-top: 20px;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     padding: 1rem 9%;
-    background-color: rgba(18, 10, 26, 0.9); /* Use rgba for transparency */
+    background-color: rgba(18, 10, 26, 0.9);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 100; /* Ensure header is on top */
+    z-index: 100;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
 }
@@ -82,12 +78,15 @@ header {
     text-shadow: var(--glow-accent);
 }
 
+/* Desktop Navigation */
+nav {
+    transition: transform 0.4s ease-in-out, opacity 0.4s, visibility 0.4s;
+}
 nav ul {
     list-style: none;
-    display: flex; /* Default to flex for desktop */
+    display: flex;
     gap: 4rem;
 }
-
 nav a {
     font-size: 1.8rem;
     color: var(--text-color);
@@ -96,7 +95,6 @@ nav a {
     padding: 0.5rem 0;
     position: relative;
 }
-
 nav a::after {
     content: '';
     position: absolute;
@@ -107,72 +105,61 @@ nav a::after {
     bottom: -5px;
     transition: width 0.3s ease;
 }
-
 nav a:hover::after,
 nav a.active-link::after {
     width: 100%;
 }
-
 nav a:hover,
 nav a.active-link {
     color: var(--primary-color);
 }
 
 .mobile-nav-toggle {
-    display: none; /* Hidden by default on desktop */
+    display: none;
     background: transparent;
     color: var(--primary-color);
     font-size: 3rem;
     cursor: pointer;
     position: relative;
-    z-index: 1001; /* Higher than nav to be clickable */
+    z-index: 1001;
 }
 
-/* Mobile Navigation Specific Styles */
+/* Mobile Navigation Styles */
 @media (max-width: 995px) {
-    /* Show mobile toggle button */
     .mobile-nav-toggle {
         display: block;
     }
 
-    /* Hide desktop navigation */
-    nav ul {
-        display: none; /* Hide the ul by default on mobile */
-    }
-
-    /* Styles for the mobile navigation panel when active */
     nav {
-        position: fixed; /* Fixed to viewport */
+        position: fixed;
         top: 0;
         right: 0;
-        width: 75%; /* Width of the sliding menu */
-        height: 100vh; /* Full viewport height */
-        background-color: rgba(18, 10, 26, 0.98); /* Less transparent when open */
+        width: 75%;
+        height: 100vh;
+        background-color: rgba(18, 10, 26, 0.98);
         backdrop-filter: blur(20px);
         box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
-        transform: translateX(100%); /* Start off-screen to the right */
-        transition: transform 0.4s ease-in-out, visibility 0s 0.4s, opacity 0.4s ease; /* Transition for slide and fade */
-        padding: 80px 2rem 2rem; /* Padding for content below header */
-        display: flex; /* Use flex for vertical alignment of list items */
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out, opacity 0.4s, visibility 0.4s;
+        padding: 80px 2rem 2rem;
+        display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
-        z-index: 1000; /* Below toggle button, above content */
-        visibility: hidden; /* Hidden initially */
-        opacity: 0; /* Fully transparent initially */
-        overflow-y: auto; /* Enable scrolling for long menus */
+        z-index: 1000;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        visibility: hidden;
+        opacity: 0;
     }
 
-    /* When 'active' class is added by JS */
     nav.active {
-        transform: translateX(0); /* Slide into view */
-        visibility: visible; /* Make visible */
-        opacity: 1; /* Fade in */
-        transition: transform 0.4s ease-in-out, visibility 0s, opacity 0.4s ease; /* No delay on visibility when active */
+        transform: translateX(0);
+        visibility: visible;
+        opacity: 1;
     }
 
-    nav.active ul {
-        display: flex; /* Show the ul when nav is active */
+    nav ul {
         flex-direction: column;
         align-items: flex-start;
         gap: 2.5rem;
@@ -181,15 +168,25 @@ nav a.active-link {
     }
 
     nav a {
-        padding: 1.2rem 0; /* Larger touch targets */
+        display: block;
+        width: 100%;
+        padding: 1.2rem 0;
+        text-align: left;
         border-bottom: 1px solid rgba(248, 248, 255, 0.1);
     }
 
     nav a:last-child {
         border-bottom: none;
     }
+
+    nav a:hover,
+    nav a.active-link {
+        color: var(--accent-color);
+        padding-left: 1.5rem;
+    }
 }
 
+/* Main Sections */
 section {
     min-height: 100vh;
     padding: 8rem 9% 5rem;
@@ -202,23 +199,20 @@ section {
 /* Hero Section */
 .hero {
     background-color: var(--dark-bg);
-    padding-top: 14rem; /* Increased padding-top to accommodate larger robot */
+    padding-top: 12rem;
 }
-
 .hero .container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 8rem; /* Increased gap to prevent overlap with larger robot */
+    gap: 6rem;
     text-align: center;
 }
-
 .hero-content {
     flex: 1 1 500px;
     max-width: 600px;
 }
-
 .hero-content h1 {
     font-size: 6rem;
     font-weight: 700;
@@ -227,38 +221,35 @@ section {
     margin-bottom: 2rem;
     text-shadow: 0 0 15px rgba(248, 248, 255, 0.2);
 }
-
 .hero-content p {
     font-size: 1.8rem;
     color: var(--cyber-blue);
     margin-bottom: 3rem;
     line-height: 1.6;
 }
-
 .hero-image-container {
     flex: 1 1 400px;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 900px;
+    min-height: 400px;
     position: relative;
     border-radius: 1rem;
     overflow: hidden;
+    background-color: var(--medium-dark-bg);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
 }
-
 spline-viewer {
     width: 100%;
     height: 100%;
-    min-height: 600px;
+    min-height: 400px;
 }
-
 .button-container {
     display: flex;
     justify-content: center;
     gap: 2rem;
     margin-top: 3rem;
 }
-
 .download-button {
     display: inline-block;
     padding: 1.2rem 3.5rem;
@@ -270,7 +261,6 @@ spline-viewer {
     transition: 0.3s ease;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
-
 .download-button:hover {
     transform: translateY(-5px);
     background-color: var(--accent-color);
@@ -284,7 +274,6 @@ spline-viewer {
     color: var(--cyber-blue);
     min-height: 3rem;
 }
-
 .typing-text .animated-text {
     color: var(--neon-pink);
     font-weight: 600;
@@ -295,7 +284,6 @@ spline-viewer {
     background-color: var(--medium-dark-bg);
     padding-top: 8rem;
 }
-
 .portfolio-projects h2 {
     font-size: 4.5rem;
     text-align: center;
@@ -303,13 +291,11 @@ spline-viewer {
     color: var(--text-color);
     text-shadow: var(--glow-primary);
 }
-
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 3rem;
 }
-
 .project-item {
     background-color: var(--dark-bg);
     border-radius: 1rem;
@@ -319,19 +305,16 @@ spline-viewer {
     display: flex;
     flex-direction: column;
 }
-
 .project-item:hover {
     transform: translateY(-10px);
     box-shadow: var(--glow-blue);
 }
-
 .project-item img {
     width: 100%;
     height: 200px;
     object-fit: cover;
     border-bottom: 1px solid var(--medium-dark-bg);
 }
-
 .project-content {
     padding: 2rem;
     flex-grow: 1;
@@ -339,20 +322,17 @@ spline-viewer {
     flex-direction: column;
     justify-content: space-between;
 }
-
 .project-content h3 {
     font-size: 2.5rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
 }
-
 .project-content p {
     font-size: 1.6rem;
     color: var(--cyber-blue);
     margin-bottom: 2rem;
     line-height: 1.5;
 }
-
 .project-link {
     display: inline-block;
     padding: 0.8rem 2rem;
@@ -364,7 +344,6 @@ spline-viewer {
     transition: 0.3s ease;
     align-self: flex-start;
 }
-
 .project-link:hover {
     background-color: var(--accent-color);
     transform: scale(1.05);
@@ -376,7 +355,6 @@ spline-viewer {
     background-color: var(--dark-bg);
     padding-top: 8rem;
 }
-
 #behance-brothers h2 {
     font-size: 4.5rem;
     text-align: center;
@@ -384,7 +362,6 @@ spline-viewer {
     color: var(--text-color);
     text-shadow: var(--glow-primary);
 }
-
 #behance-brothers p {
     font-size: 1.8rem;
     text-align: center;
@@ -392,7 +369,6 @@ spline-viewer {
     color: var(--cyber-blue);
     line-height: 1.6;
 }
-
 #behance-brothers .project-item {
     background-color: var(--medium-dark-bg);
     border: 2px solid var(--primary-color);
@@ -403,13 +379,11 @@ spline-viewer {
     justify-content: center;
     align-items: center;
 }
-
 #behance-brothers .project-item h3 {
     font-size: 2.8rem;
     color: var(--primary-color);
     margin-bottom: 1.5rem;
 }
-
 #behance-brothers .project-item p {
     font-size: 1.6rem;
     color: var(--cyber-blue);
@@ -421,7 +395,6 @@ spline-viewer {
     background-color: var(--medium-dark-bg);
     padding-top: 8rem;
 }
-
 .about-section .container {
     display: flex;
     flex-wrap: wrap;
@@ -429,7 +402,6 @@ spline-viewer {
     align-items: center;
     gap: 5rem;
 }
-
 .section-title {
     font-size: 4.5rem;
     text-align: center;
@@ -438,7 +410,6 @@ spline-viewer {
     width: 100%;
     text-shadow: var(--glow-primary);
 }
-
 .about-content {
     display: flex;
     flex-wrap: wrap;
@@ -446,19 +417,16 @@ spline-viewer {
     gap: 4rem;
     width: 100%;
 }
-
 .about-text {
     flex: 1 1 450px;
     max-width: 600px;
 }
-
 .about-text p {
     font-size: 1.8rem;
     color: var(--cyber-blue);
     line-height: 1.6;
     margin-bottom: 2rem;
 }
-
 .about-image {
     flex: 1 1 400px;
     min-height: 400px;
@@ -471,14 +439,11 @@ spline-viewer {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
     position: relative;
 }
-
-/* Ensure spline-viewer fills its container */
 .about-image spline-viewer {
     width: 100%;
     height: 100%;
-    min-height: 400px; /* Ensure it takes up space */
+    min-height: 400px;
 }
-
 
 /* Contact Section */
 .contact-section {
@@ -486,20 +451,17 @@ spline-viewer {
     padding-top: 8rem;
     text-align: center;
 }
-
 .section-subtitle {
     font-size: 2rem;
     color: var(--cyber-blue);
     margin-bottom: 4rem;
 }
-
 .contact-info {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 3rem;
 }
-
 .contact-item {
     background-color: var(--medium-dark-bg);
     padding: 3rem;
@@ -509,30 +471,25 @@ spline-viewer {
     flex: 1 1 280px;
     max-width: 350px;
 }
-
 .contact-item:hover {
     transform: translateY(-10px);
     box-shadow: var(--glow-blue);
 }
-
 .contact-item i {
     font-size: 4rem;
     color: var(--primary-color);
     margin-bottom: 2rem;
 }
-
 .contact-item h3 {
     font-size: 2.5rem;
     color: var(--text-color);
     margin-bottom: 1rem;
 }
-
 .contact-item a {
     font-size: 1.8rem;
     color: var(--cyber-blue);
     transition: color 0.3s ease;
 }
-
 .contact-item a:hover {
     color: var(--primary-color);
 }
@@ -546,7 +503,6 @@ spline-viewer {
     text-align: center;
     border-top: 1px solid var(--medium-dark-bg);
 }
-
 .footer-content {
     display: flex;
     flex-wrap: wrap;
@@ -554,7 +510,6 @@ spline-viewer {
     gap: 3rem;
     margin-bottom: 3rem;
 }
-
 .footer-about,
 .footer-links,
 .footer-social {
@@ -562,7 +517,6 @@ spline-viewer {
     max-width: 350px;
     text-align: left;
 }
-
 .footer-logo {
     font-family: 'Orbitron', sans-serif;
     font-size: 2.8rem;
@@ -570,41 +524,33 @@ spline-viewer {
     margin-bottom: 1.5rem;
     text-shadow: var(--glow-primary);
 }
-
 .footer-about p {
     line-height: 1.6;
 }
-
 .footer-links h3,
 .footer-social h3 {
     font-size: 2.2rem;
     color: var(--text-color);
     margin-bottom: 1.5rem;
 }
-
 .footer-links ul {
     list-style: none;
 }
-
 .footer-links ul li {
     margin-bottom: 1rem;
 }
-
 .footer-links a {
     color: var(--cyber-blue);
     transition: color 0.3s ease;
 }
-
 .footer-links a:hover {
     color: var(--primary-color);
 }
-
 .footer-social .social-icons {
     display: flex;
     gap: 1.5rem;
     justify-content: flex-start;
 }
-
 .social-icons a {
     display: inline-flex;
     justify-content: center;
@@ -619,68 +565,57 @@ spline-viewer {
     transition: 0.3s ease;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
-
 .social-icons a:hover {
     background-color: var(--primary-color);
     color: var(--dark-bg);
     box-shadow: var(--glow-primary);
     transform: translateY(-5px) scale(1.1);
 }
-
 .footer-bottom {
     margin-top: 3rem;
     padding-top: 2rem;
     border-top: 1px solid var(--medium-dark-bg);
-    color: var(--neon-purple); /* Using a softer purple for copyright */
+    color: var(--neon-purple);
 }
 
-/* General Responsive Adjustments */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     html {
         font-size: 58%;
     }
-
     .hero .container {
         flex-direction: column;
         gap: 4rem;
     }
-
     .hero-content h1 {
         font-size: 5rem;
     }
-
     .hero-image-container,
     .about-image {
         min-height: 300px;
         height: 300px;
     }
-
     .about-content {
         flex-direction: column;
         gap: 3rem;
     }
-
     .contact-info {
         flex-direction: column;
         align-items: center;
     }
-
     .contact-item {
         width: 90%;
         max-width: 400px;
     }
-
     .footer-content {
         flex-direction: column;
         align-items: center;
     }
-
     .footer-about,
     .footer-links,
     .footer-social {
         text-align: center;
     }
-
     .footer-social .social-icons {
         justify-content: center;
     }
@@ -690,41 +625,32 @@ spline-viewer {
     html {
         font-size: 55%;
     }
-
     header {
         padding: 1rem 5%;
     }
-
     section {
         padding: 6rem 5% 4rem;
     }
-
     .hero-content h1 {
         font-size: 4rem;
     }
-
     .button-container {
         flex-direction: column;
         gap: 1.5rem;
     }
-
     .download-button {
         width: 100%;
         text-align: center;
     }
-
     .projects-grid {
         grid-template-columns: 1fr;
     }
-
     .project-item img {
         height: 180px;
     }
-
     .section-title {
         font-size: 3.5rem;
     }
-
     .section-subtitle {
         font-size: 1.6rem;
     }
